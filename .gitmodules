@@ -1,0 +1,3 @@
+[submodule "be-common"]
+	path = be-common
+	url = https://github.com/notabarista/be-common.git
