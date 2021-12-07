@@ -1,0 +1,66 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+ 
+  <changeSet author="tudor.codrea" id="create_table_grinder_conversions" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <not> 
+            	<tableExists tableName="grinder_conversions" />
+            </not>
+        </preConditions>
+
+        <createTable tableName="grinder_conversions">
+            <column name="id" remarks="grinder_conversions" type="UUID">
+                <constraints primaryKey="true" primaryKeyName="grinder_conversions_id_pk"/>
+            </column>
+            
+            <column name="grinder" type="varchar(255)">
+            	<constraints nullable="false"/>
+            </column>
+            
+            <column name="grinder_about" type="text">
+            </column>           
+            
+            <column name="grinder_media_url" type="text">
+            </column>
+
+            <column name="grind_size" type="varchar(255)">
+            	<constraints nullable="false" />
+            </column>
+			<column name="grinder_setting" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+
+            <column name="created_at" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="modified_at" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="created_by" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="modified_by" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="version" type="numeric(10)">
+				<constraints nullable="false"/>
+			</column>
+        </createTable>
+    </changeSet>
+
+	<changeSet author="tudor.codrea" id="add_grinder_conversions_uk">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<indexExists indexName="grinder_conversions_uk" />
+			</not>
+		</preConditions>
+		<addUniqueConstraint
+				constraintName="grinder_conversions_uk" tableName="grinder_conversions"
+				columnNames="grinder,grind_size,grinder_setting" />
+	</changeSet>
+    
+</databaseChangeLog>

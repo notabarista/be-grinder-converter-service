@@ -1,0 +1,47 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="tudor.codrea" id="create_table_grinder_conversion_brewing_method" runOnChange="true">
+    	<preConditions onFail="MARK_RAN">
+            <not> 
+            	<tableExists tableName="grinder_conversion_brewing_method" />
+            </not>
+        </preConditions>
+        <createTable tableName="grinder_conversion_brewing_method">
+            <column name="grinder_conversion_id" type="UUID"/>
+            <column name="brewing_method_id" type="UUID"/>
+        </createTable>        
+    </changeSet>    
+    
+    <changeSet author="tudor.codrea" id="add_grinder_conversion_fk">
+    	<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="grinder_conversion_fk" />
+			</not>
+		</preConditions>
+        <addForeignKeyConstraint baseColumnNames="grinder_conversion_id" baseTableName="grinder_conversion_brewing_method" constraintName="grinder_conversion_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="grinder_conversions" validate="true"/>
+    </changeSet>
+    <changeSet author="tudor.codrea" id="add_brewing_method_fk">
+    	<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="brewing_method_fk" />
+			</not>
+		</preConditions>
+        <addForeignKeyConstraint baseColumnNames="brewing_method_id" baseTableName="grinder_conversion_brewing_method" constraintName="brewing_method_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="brewing_methods" validate="true"/>
+    </changeSet>
+    
+    <changeSet author="tudor.codrea" id="add_grinder_conversion_brewing_method_uk" runOnChange="true">
+		<preConditions onFail="MARK_RAN">
+			<not> <indexExists indexName="grinder_conversion_brewing_method_uk" /> </not>
+		</preConditions>
+		<addUniqueConstraint
+			constraintName="grinder_conversion_brewing_method_uk"
+			tableName="grinder_conversion_brewing_method"
+			columnNames="grinder_conversion_id,brewing_method_id"/>
+	</changeSet>
+
+</databaseChangeLog>
