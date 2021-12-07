@@ -1,3 +1,6 @@
 [submodule "be-common"]
 	path = be-common
 	url = https://github.com/notabarista/be-common.git
+[submodule "be-common-util"]
+	path = be-common-util
+	url = https://github.com/notabarista/be-common-util.git
