@@ -3,10 +3,15 @@ server:
   use-forward-headers-strategy: true
 
 spring:
-  #  http:
-  #    log-request-details: true
-  mvc:
-    log-request-details: true
+  output:
+    ansi:
+      enabled: DETECT
+  data:
+    web:
+      pageable:
+        max-page-size: 100000
+        default-page-size: 100000
+
   boot:
     admin:
       ui:
@@ -20,38 +25,40 @@ spring:
     discovery:
       enabled: false
 
+  mvc:
+    log-request-details: true
   main:
     allow-bean-definition-overriding: true
   liquibase:
     enabled: false
     change-log: classpath:/db/changelog/changelog-master.xml
   datasource:
-      driver-class-name: org.postgresql.Driver
-      url: ${GRINDER_DB_URL}
-      username: ${GRINDER_DB_USER}
-      password: ${GRINDER_DB_PASS}
-      hikari:
-        maximum-pool-size: 2
+    driver-class-name: org.postgresql.Driver
+    url: ${GRINDER_DB_URL}
+    username: ${GRINDER_DB_USER}
+    password: ${GRINDER_DB_PASS}
+    hikari:
+      maximum-pool-size: 2
   jpa:
     show-sql: false
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
-        default_schema: nab
+        default_schema: ${DEFAULT_SCHEMA}
         format_sql: true
         enable_lazy_load_no_trans: true
         jdbc:
           lob:
             non_contextual_creation: true
 
-  ribbon:
-    http:
-      client:
-        enabled: true
-    https:
-      client:
-        enabled: true
+ribbon:
+  http:
+    client:
+      enabled: true
+  https:
+    client:
+      enabled: true
 
 management:
   endpoints:
@@ -74,5 +81,7 @@ logging:
   level:
     root: info
     org.springframework: warn
-    com.notabarrista: info
-     
+    org.hibernate: info
+    org.notabarista: info
+
+      #    logger.com.netflix.*: warn
