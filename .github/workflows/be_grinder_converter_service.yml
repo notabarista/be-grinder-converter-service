@@ -70,3 +70,5 @@ jobs:
           #The Heroku unique app name
           heroku_app_name: "nab-grinder-converter"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
+          
