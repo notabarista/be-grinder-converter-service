@@ -64,23 +64,15 @@ jobs:
         run: docker image push notabarista/be-grinder-converter-service:latest
 
       - name: Login to Heroku Container registry
-          env:
-            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          run: heroku container:login
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login
       - name: Build and push
-          env:
-            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:push -a ${{ secrets.HEROKU_GRINDER_APP_NAME }} web
       - name: Release
-          env:
-            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
-
-      # This is the Heroku deploy action  
-#      - uses: akhileshns/heroku-deploy@v3.12.12
-#        with:
-#          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#          #The Heroku unique app name
-#          heroku_app_name: "nab-grinder-converter"
-#          heroku_email: ${{secrets.HEROKU_EMAIL}}
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:release -a ${{ secrets.HEROKU_GRINDER_APP_NAME }} web
 
