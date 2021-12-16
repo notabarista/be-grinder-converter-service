@@ -63,16 +63,11 @@ jobs:
       - name: Docker pushing the latest image
         run: docker image push notabarista/be-grinder-converter-service:latest
 
-      - name: Login to Heroku Container registry
+      - name: Login to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
-      - name: Build and push
+      - name: Build and push to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push -a ${{ secrets.HEROKU_GRINDER_APP_NAME }} web
-      - name: Release
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a ${{ secrets.HEROKU_GRINDER_APP_NAME }} web
-
+        run: mvn clean heroku:deploy
