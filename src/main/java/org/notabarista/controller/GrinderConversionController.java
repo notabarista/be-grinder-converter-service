@@ -3,9 +3,7 @@ package org.notabarista.controller;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.time.StopWatch;
-import org.notabarista.controller.abstr.AbstractReadController;
 import org.notabarista.dto.GrinderConversionDTO;
-import org.notabarista.entity.GrinderConversionEntity;
 import org.notabarista.entity.response.Response;
 import org.notabarista.entity.response.ResponseStatus;
 import org.notabarista.exception.AbstractNotabaristaException;
@@ -13,7 +11,6 @@ import org.notabarista.service.GrinderConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +34,6 @@ public class GrinderConversionController {
     @Autowired
     private GrinderConversionService grinderConversionService;
 
-    @CrossOrigin
     @GetMapping(value = "/findByGrinder/{grinder}", produces = "application/json")
     @ResponseBody
     public ResponseEntity<Response<GrinderConversionDTO>> getAllByGrinder(@NonNull @PathVariable String grinder) {
@@ -55,7 +51,6 @@ public class GrinderConversionController {
                 HttpStatus.OK);
     }
 
-    @CrossOrigin
     @GetMapping(value = "/findByGrinderAndBrewingMethod/{grinder}", produces = "application/json")
     @ResponseBody
     public ResponseEntity<Response<GrinderConversionDTO>> getByGrinderAndBrewingMethod(@NonNull @PathVariable String grinder, @NonNull @RequestParam("brewing") String brewingMethod) throws AbstractNotabaristaException {
