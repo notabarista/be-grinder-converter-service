@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.55ea8edd.css",
+    "main.js": "/static/js/main.1c6ef806.js",
+    "static/js/787.b95d21ec.chunk.js": "/static/js/787.b95d21ec.chunk.js",
+    "static/media/coffeegrains.png": "/static/media/coffeegrains.cb4b7f95b5b9bf4cf987.png",
+    "static/media/grinder.png": "/static/media/grinder.379bbfff9151dc2fd469.png",
+    "static/media/istockphoto-1066887298-612x612.jpg": "/static/media/istockphoto-1066887298-612x612.866e0baa1043171fe91d.jpg",
+    "index.html": "/index.html",
+    "main.55ea8edd.css.map": "/static/css/main.55ea8edd.css.map",
+    "main.1c6ef806.js.map": "/static/js/main.1c6ef806.js.map",
+    "787.b95d21ec.chunk.js.map": "/static/js/787.b95d21ec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55ea8edd.css",
+    "static/js/main.1c6ef806.js"
+  ]
+}
