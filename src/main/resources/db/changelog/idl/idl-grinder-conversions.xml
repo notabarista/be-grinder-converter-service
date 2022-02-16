@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
 	<changeSet author="tudor.codrea" id="initial-data-grinder-conversions">
-		<loadData encoding="UTF-8" separator="tudor.codrea" tableName="grinder-conversions" file="db/data/data-grinder-conversions.csv" />
+		<loadData encoding="UTF-8" tableName="grinder_conversions" file="db/data/data-grinder-conversions.csv" />
 	</changeSet>
 
 </databaseChangeLog>

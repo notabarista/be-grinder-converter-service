@@ -8,6 +8,6 @@
 
 	<include file="/db/changelog/init/changelog-dml.xml" />
 	<!-- <includeAll path="./update" relativeToChangelogFile="true" /> -->
-<!--	<include file="/db/changelog/idl/changelog-idl.xml" />-->
+	<include file="/db/changelog/idl/changelog-idl.xml" />
 
 </databaseChangeLog>
