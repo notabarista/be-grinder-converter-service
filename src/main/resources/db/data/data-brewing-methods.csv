@@ -1,0 +1,6 @@
+id,grind_size,brewing_method,grind_specification,created_at,modified_at,created_by,modified_by,version
+2f04baf4-ce1e-4f4a-80b7-1aa064bbed2f,200,Turkish,Extreme fine grinding,2021-12-06 17:22:21.000000,2021-12-06 17:22:21.000000,test,test,0
+2c6ef4e0-0b77-40f7-a1bc-a83246364f48,200-300,Turkish Espresso,Extreme fine grinding,2021-12-06 17:22:21.000000,2021-12-06 17:22:21.000000,test,test,0
+2c6ef4e0-0b77-40f7-a1bc-a83246364f50,300-400,Espresso Aeropress,Finest grinding,2021-12-06 17:22:21.000000,2021-12-06 17:22:21.000000,test,test,0
+2c6ef4e0-0b77-40f7-a1bc-a83246364f51,400-500,Espresso Aeropress Syphon,Fine grinding,2021-12-06 17:22:21.000000,2021-12-06 17:22:21.000000,test,test,0
+2c6ef4e0-0b77-40f7-a1bc-a83246364f52,500-600,Espresso Aeropress Syphon,Medium-fine grinding,2021-12-06 17:22:21.000000,2021-12-06 17:22:21.000000,test,test,0

@@ -22,6 +22,8 @@
 			
 			<column name="brewing_method" type="VARCHAR(255)"/>
 
+			<column name="grind_specification" type="VARCHAR(255)"/>
+
 			<column name="created_at" type="datetime">
 				<constraints nullable="false" />
 			</column>

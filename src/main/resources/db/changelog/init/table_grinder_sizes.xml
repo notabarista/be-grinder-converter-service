@@ -5,29 +5,26 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
 	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
  
-  <changeSet author="tudor.codrea" id="create_table_grinder_conversions" runOnChange="true">
+  <changeSet author="tudor.codrea" id="create_table_grinder_sizes" runOnChange="true">
         <preConditions onFail="MARK_RAN">
             <not> 
-            	<tableExists tableName="grinder_conversions" />
+            	<tableExists tableName="grinder_sizes" />
             </not>
         </preConditions>
 
-        <createTable tableName="grinder_conversions">
-            <column name="id" remarks="grinder_conversions" type="UUID">
-                <constraints primaryKey="true" primaryKeyName="grinder_conversions_id_pk"/>
+        <createTable tableName="grinder_sizes">
+            <column name="id" remarks="grinder_sizes" type="UUID">
+                <constraints primaryKey="true" primaryKeyName="grinder_sizes_id_pk"/>
             </column>
             
-            <column name="grinder" type="varchar(255)">
+            <column name="grinder" type="UUID">
             	<constraints nullable="false"/>
             </column>
             
-            <column name="grinder_about" type="text">
+            <column name="grind_size" type="varchar(255)">
             </column>           
-            
-            <column name="grinder_media_url" type="text">
-            </column>
 
-            <column name="clicks_per_round" type="varchar(255)">
+            <column name="clicks_per_round" type="integer">
             	<constraints nullable="false" />
             </column>
 
@@ -49,15 +46,12 @@
         </createTable>
     </changeSet>
 
-	<changeSet author="tudor.codrea" id="add_grinder_conversions_uk">
+	<changeSet author="tudor.codrea" id="add_grinder_fk">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<indexExists indexName="grinder_conversions_uk" />
+				<foreignKeyConstraintExists foreignKeyName="grinder_size_grinder_fk" />
 			</not>
 		</preConditions>
-		<addUniqueConstraint
-				constraintName="grinder_conversions_uk" tableName="grinder_conversions"
-				columnNames="grinder" />
+		<addForeignKeyConstraint baseColumnNames="grinder" baseTableName="grinder_sizes" constraintName="grinder_size_grinder_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="grinder_conversions" validate="true"/>
 	</changeSet>
-    
 </databaseChangeLog>

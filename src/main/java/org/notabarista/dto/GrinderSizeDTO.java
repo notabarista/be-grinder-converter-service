@@ -7,10 +7,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.notabarista.entity.GrinderConversionEntity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -20,13 +25,15 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BrewingMethodDTO {
+public class GrinderSizeDTO {
 
     private UUID id;
 
+    private UUID grinder;
     private String grindSize;
-    private String brewingMethod;
-    private String grindSpecification;
+    private String clicksPerRound;
+
+    private GrinderConversionDTO grinderConversion;
 
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

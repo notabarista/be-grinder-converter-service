@@ -1,6 +1,5 @@
 package org.notabarista.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -17,11 +16,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -31,23 +30,20 @@ import java.util.List;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "grinder_conversions")
-public class GrinderConversionEntity extends AbstractAuditedEntity {
+@Table(name = "grinder_sizes")
+public class GrinderSizeEntity extends AbstractAuditedEntity {
 
-    @Column(name = "grinder")
-    private String grinder;
+    @Column(name = "grinder", nullable = false, updatable = false, insertable = false)
+    private UUID grinder;
 
-    @Column(name = "grinder_about", columnDefinition="TEXT")
-    private String aboutGrinder;
-
-    @Column(name = "grinder_media_url", columnDefinition="TEXT")
-    private String grinderMediaUrl;
+    @Column(name = "grind_size")
+    private String grindSize;
 
     @Column(name = "clicks_per_round")
     private String clicksPerRound;
 
-    @OneToMany(targetEntity = GrinderSizeEntity.class, mappedBy = "grinderConversion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("grinderConversion")
-    private List<GrinderSizeEntity> grinderSizes;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "grinder", referencedColumnName = "id")
+    private GrinderConversionEntity grinderConversion;
 
 }

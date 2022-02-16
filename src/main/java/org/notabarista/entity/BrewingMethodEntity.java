@@ -1,6 +1,5 @@
 package org.notabarista.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,14 +10,12 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.List;
 
 @Getter
 @Setter
-@ToString(exclude = {"grinderConversions"})
-@EqualsAndHashCode(callSuper = false, exclude = {"grinderConversions"})
+@ToString(exclude = {})
+@EqualsAndHashCode(callSuper = false, exclude = {})
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
@@ -32,7 +29,7 @@ public class BrewingMethodEntity extends AbstractAuditedEntity {
     @Column(name = "brewing_method")
     private String brewingMethod;
 
-    @ManyToMany(mappedBy = "grinderBrewingMethods", targetEntity = GrinderConversionEntity.class)
-    @JsonIgnoreProperties
-    private List<GrinderConversionEntity> grinderConversions;
+    @Column(name = "grind_specification")
+    private String grindSpecification;
+
 }

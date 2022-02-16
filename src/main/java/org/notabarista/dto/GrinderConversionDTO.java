@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString(exclude = {})
-@EqualsAndHashCode(callSuper = false, exclude = {"grinderBrewingMethods"})
+@EqualsAndHashCode(callSuper = false, exclude = {"grinderSizes"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -28,7 +28,7 @@ public class GrinderConversionDTO {
     private String aboutGrinderMediaUrl;
     private String grindSize;
     private String grinderSetting;
-    private List<BrewingMethodDTO> grinderBrewingMethods;
+    private List<GrinderSizeDTO> grinderSizes;
 
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

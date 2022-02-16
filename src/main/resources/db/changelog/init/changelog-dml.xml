@@ -7,7 +7,6 @@
 
 	<include file="/db/changelog/init/table_grinder_conversions.xml"/>
     <include file="/db/changelog/init/table_brewing_methods.xml"/>
-
-    <include file="/db/changelog/init/table_grinder_conversion_brewing_method.xml"/>
+	<include file="/db/changelog/init/table_grinder_sizes.xml"/>
 
 </databaseChangeLog>

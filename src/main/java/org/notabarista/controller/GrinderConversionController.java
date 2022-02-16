@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,40 +33,6 @@ public class GrinderConversionController {
     @Autowired
     private GrinderConversionService grinderConversionService;
 
-    @GetMapping(value = "/findByGrinder/{grinder}", produces = "application/json")
-    @ResponseBody
-    public ResponseEntity<Response<GrinderConversionDTO>> getAllByGrinder(@NonNull @PathVariable String grinder) {
-        StopWatch watch = new StopWatch();
-        watch.start();
-        if (log.isInfoEnabled()) {
-            log.info("Find by grinder: " + grinder);
-        }
-
-        List<GrinderConversionDTO> grinderConversionsByGrinder = grinderConversionService.findGrinderConversionByGrinder(grinder);
-
-        watch.stop();
-        return new ResponseEntity<>(
-                new Response<GrinderConversionDTO>(ResponseStatus.SUCCESS, watch.getTime(), grinderConversionsByGrinder, grinderConversionsByGrinder.size(), 1, 0, grinderConversionsByGrinder.size(), ""),
-                HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/findByGrinderAndBrewingMethod/{grinder}", produces = "application/json")
-    @ResponseBody
-    public ResponseEntity<Response<GrinderConversionDTO>> getByGrinderAndBrewingMethod(@NonNull @PathVariable String grinder, @NonNull @RequestParam("brewing") String brewingMethod) throws AbstractNotabaristaException {
-        StopWatch watch = new StopWatch();
-        watch.start();
-        if (log.isInfoEnabled()) {
-            log.info("Find by grinder: " + grinder + " and brewing method: " + brewingMethod);
-        }
-
-        List<GrinderConversionDTO> grinderConversionsByGrinder = grinderConversionService.findGrinderConversionByGrinder(grinder);
-
-        watch.stop();
-        return new ResponseEntity<>(
-                new Response<GrinderConversionDTO>(ResponseStatus.SUCCESS, watch.getTime(), grinderConversionsByGrinder, grinderConversionsByGrinder.size(), 1, 0, grinderConversionsByGrinder.size(), ""),
-                HttpStatus.OK);
-    }
-
     @GetMapping("/all")
     public ResponseEntity<Response<GrinderConversionDTO>> getAll() throws AbstractNotabaristaException {
         StopWatch watch = new StopWatch();
@@ -77,6 +42,23 @@ public class GrinderConversionController {
         }
 
         List<GrinderConversionDTO> grinderConversionsByGrinder = grinderConversionService.findAll();
+
+        watch.stop();
+        return new ResponseEntity<>(
+                new Response<GrinderConversionDTO>(ResponseStatus.SUCCESS, watch.getTime(), grinderConversionsByGrinder, grinderConversionsByGrinder.size(), 1, 0, grinderConversionsByGrinder.size(), ""),
+                HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/byGrinder/{grinder}", produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<Response<GrinderConversionDTO>> findByGrinder(@NonNull @PathVariable String grinder) {
+        StopWatch watch = new StopWatch();
+        watch.start();
+        if (log.isInfoEnabled()) {
+            log.info("Find by grinder: " + grinder);
+        }
+
+        List<GrinderConversionDTO> grinderConversionsByGrinder = grinderConversionService.findGrinderConversionByGrinder(grinder);
 
         watch.stop();
         return new ResponseEntity<>(
