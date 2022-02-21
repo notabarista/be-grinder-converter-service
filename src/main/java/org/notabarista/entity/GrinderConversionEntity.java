@@ -37,10 +37,10 @@ public class GrinderConversionEntity extends AbstractAuditedEntity {
     @Column(name = "grinder")
     private String grinder;
 
-    @Column(name = "grinder_about", columnDefinition="TEXT")
+    @Column(name = "grinder_about")
     private String aboutGrinder;
 
-    @Column(name = "grinder_media_url", columnDefinition="TEXT")
+    @Column(name = "grinder_media_url")
     private String grinderMediaUrl;
 
     @Column(name = "clicks_per_round")

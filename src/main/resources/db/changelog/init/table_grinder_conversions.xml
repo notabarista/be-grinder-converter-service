@@ -21,10 +21,10 @@
             	<constraints nullable="false"/>
             </column>
             
-            <column name="grinder_about" type="text">
+            <column name="grinder_about" type="VARCHAR(255)">
             </column>           
             
-            <column name="grinder_media_url" type="text">
+            <column name="grinder_media_url" type="VARCHAR(255)">
             </column>
 
             <column name="clicks_per_round" type="varchar(255)">
