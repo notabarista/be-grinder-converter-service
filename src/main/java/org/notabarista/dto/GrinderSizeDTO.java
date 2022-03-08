@@ -33,12 +33,9 @@ public class GrinderSizeDTO {
     private String grindSize;
     private String clicksPerRound;
 
-    private GrinderConversionDTO grinderConversion;
-
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private String createdBy;
     private String modifiedBy;
     private Integer version;
-
 }

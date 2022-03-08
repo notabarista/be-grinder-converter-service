@@ -8,25 +8,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-@ToString(exclude = {})
-@EqualsAndHashCode(callSuper = false, exclude = {})
+@ToString(exclude = {"grinderSizes"})
+@EqualsAndHashCode(callSuper = false, exclude = {"grinderSizes"})
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
@@ -48,6 +43,5 @@ public class GrinderConversionEntity extends AbstractAuditedEntity {
 
     @OneToMany(targetEntity = GrinderSizeEntity.class, mappedBy = "grinderConversion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("grinderConversion")
-    private List<GrinderSizeEntity> grinderSizes;
-
+    private List<GrinderSizeEntity> grinderSizes = new ArrayList<>();
 }

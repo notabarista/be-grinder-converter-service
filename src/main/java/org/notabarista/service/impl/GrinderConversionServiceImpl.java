@@ -1,6 +1,7 @@
 package org.notabarista.service.impl;
 
 import org.notabarista.dto.GrinderConversionDTO;
+import org.notabarista.entity.GrinderConversionEntity;
 import org.notabarista.mapper.GrinderConversionMapper;
 import org.notabarista.repository.GrinderConversionRepository;
 import org.notabarista.service.GrinderConversionService;
@@ -25,7 +26,9 @@ public class GrinderConversionServiceImpl implements GrinderConversionService {
 
     @Override
     public List<GrinderConversionDTO> findAll() {
-        return grinderConversionMapper.grinderConversionsToGrinderConverterDTOs(grinderConversionRepository.findAll());
+
+        List<GrinderConversionEntity> grinderConversionEntity = grinderConversionRepository.findAll();
+        return grinderConversionMapper.grinderConversionsToGrinderConverterDTOs(grinderConversionEntity);
     }
 
 }

@@ -11,10 +11,15 @@ import java.util.List;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface GrinderConversionMapper {
 
-    @Mapping(source="grinderSizes", target="grinderSizes")
+    @Mapping(source = "createdAt", target = "createdAt")
+    @Mapping(source = "modifiedAt", target = "modifiedAt")
+    @Mapping(source = "createdBy", target = "createdBy")
+    @Mapping(source = "modifiedBy", target = "modifiedBy")
+    @Mapping(source = "version", target = "version")
+    @Mapping(source = "grinderSizes", target = "grinderSizes")
     GrinderConversionDTO grinderConversionEntityToGrinderConversionDTO(GrinderConversionEntity grinderConversionEntity);
 
-    @Mapping(source="grinderSizes", target="grinderSizes")
+    @Mapping(source = "grinderSizes", target = "grinderSizes")
     GrinderConversionEntity grinderConversionDtoToGrinderConversionEntity(GrinderConversionDTO grinderConversionDTO);
 
     List<GrinderConversionDTO> grinderConversionsToGrinderConverterDTOs(List<GrinderConversionEntity> grinderConversionEntities);
