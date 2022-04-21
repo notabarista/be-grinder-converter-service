@@ -33,6 +33,8 @@ public class GrinderSizeDTO {
     private String grindSize;
     private String clicksPerRound;
 
+    private UUID brewingMethodId;
+
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private String createdBy;

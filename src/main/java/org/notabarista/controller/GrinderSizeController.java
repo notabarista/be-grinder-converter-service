@@ -71,7 +71,7 @@ public class GrinderSizeController {
         StopWatch watch = new StopWatch();
         watch.start();
         if (log.isInfoEnabled()) {
-            log.info("Find by grinder: " + grinder);
+            log.info("Find by GrinderAndSize: " + grinder);
         }
 
         List<GrinderSizeDTO> grinderSizes = grinderSizeService.findGrinderSizesByGrindSize(grinder, grindSize);
@@ -80,6 +80,40 @@ public class GrinderSizeController {
         return new ResponseEntity<>(
                 new Response<GrinderSizeDTO>(ResponseStatus.SUCCESS, watch.getTime(), grinderSizes, grinderSizes.size(), 1, 0, grinderSizes.size(), ""),
                 HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/byGrinderBrewingMethod", produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<Response<GrinderSizeDTO>> findByGrinderAndBrewingMethod(@NonNull @RequestParam String grinder, @NonNull @RequestParam String brewingMethod) {
+        StopWatch watch = new StopWatch();
+        watch.start();
+        if (log.isInfoEnabled()) {
+            log.info("Find by GrinderAndBrewingMethod: " + grinder);
+        }
+
+        List<GrinderSizeDTO> grinderSizes = grinderSizeService.findGrinderAndBrewingMethod(grinder, brewingMethod);
+
+        watch.stop();
+        return new ResponseEntity<>(
+            new Response<GrinderSizeDTO>(ResponseStatus.SUCCESS, watch.getTime(), grinderSizes, grinderSizes.size(), 1, 0, grinderSizes.size(), ""),
+            HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/byGrinderSizeBrewingMethod", produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<Response<GrinderSizeDTO>> findByGrinderAndSizeAndBrewingMethod(@NonNull @RequestParam String grinder, @NonNull @RequestParam String grindSize, @NonNull @RequestParam String brewingMethod) {
+        StopWatch watch = new StopWatch();
+        watch.start();
+        if (log.isInfoEnabled()) {
+            log.info("Find by GrinderSizeBrewingMethod: " + grinder);
+        }
+
+        List<GrinderSizeDTO> grinderSizes = grinderSizeService.findGrinderSizesByGrindSizeAndBrewingMethod(grinder, grindSize, brewingMethod);
+
+        watch.stop();
+        return new ResponseEntity<>(
+            new Response<GrinderSizeDTO>(ResponseStatus.SUCCESS, watch.getTime(), grinderSizes, grinderSizes.size(), 1, 0, grinderSizes.size(), ""),
+            HttpStatus.OK);
     }
 
 }

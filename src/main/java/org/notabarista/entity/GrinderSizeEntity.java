@@ -37,6 +37,9 @@ public class GrinderSizeEntity extends AbstractAuditedEntity {
     @Column(name = "clicks_per_round")
     private String clicksPerRound;
 
+    @Column(name = "brewing_method_id")
+    private UUID brewingMethodId;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "grinder", referencedColumnName = "id")
     private GrinderConversionEntity grinderConversion;

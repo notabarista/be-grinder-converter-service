@@ -7,7 +7,7 @@
 	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
 	<include file="/db/changelog/init/changelog-dml.xml" />
-	<!-- <includeAll path="./update" relativeToChangelogFile="true" /> -->
+	<include file="/db/changelog/update/changelog-update.xml" />
 	<include file="/db/changelog/idl/changelog-idl.xml" />
 
 </databaseChangeLog>

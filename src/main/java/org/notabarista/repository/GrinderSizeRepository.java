@@ -9,5 +9,7 @@ public interface GrinderSizeRepository extends IAbstractRepository<GrinderSizeEn
 
     List<GrinderSizeEntity> findByGrinder (UUID grinder);
     List<GrinderSizeEntity> findByGrinderAndGrindSize (UUID grinder, String grindSize);
+    List<GrinderSizeEntity> findByGrinderAndGrindSizeAndBrewingMethodId (UUID grinder, String grindSize, UUID brewingMethodId);
+    List<GrinderSizeEntity> findByGrinderAndBrewingMethodId (UUID grinder, UUID brewingMethodId);
 
 }
